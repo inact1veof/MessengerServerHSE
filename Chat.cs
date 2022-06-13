@@ -8,8 +8,9 @@ namespace WebApi
     public class Chat
     {
         public int Id { get; set; }
-        public User[] Members { get; set; }
-        public User[] Owners { get; set; }
+        public int[] Members { get; set; }
+        public int[] Owners { get; set; }
+        public string ChatName { get; set; }
         public string ChatImage { get; set; }
     }
 }

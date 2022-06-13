@@ -25,9 +25,9 @@ namespace WebApi.Controllers
         [HttpGet]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public async Task<ActionResult<IEnumerable<Message>>> GetMessage()
+        public async Task<ActionResult<IEnumerable<Message>>> GetMessageAll(int Limit)
         {
-            return await _context.Message.ToListAsync();
+            return await _context.Message.Take(Limit).ToListAsync();
         }
 
         // GET: api/Messages/5
@@ -45,6 +45,17 @@ namespace WebApi.Controllers
             }
 
             return message;
+        }
+
+        // GET: api/Messages/5
+        [HttpGet("{ChatId}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        public async Task<IEnumerable<Message>> GetMessageWithChat(int ChatId)
+        {
+            var messages = await _context.Message.Where(p => p.ReceiverChatId == ChatId).ToListAsync();
+            return messages;
         }
 
         // PUT: api/Messages/5

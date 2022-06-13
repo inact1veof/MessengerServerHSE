@@ -25,9 +25,9 @@ namespace WebApi.Controllers
         [HttpGet]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public async Task<ActionResult<IEnumerable<Book>>> GetBook()
+        public async Task<ActionResult<IEnumerable<Book>>> GetBookA(int Limit)
         {
-            return await _context.Book.ToListAsync();
+            return await _context.Book.Take(Limit).ToListAsync();
         }
 
         // GET: api/Books/5
@@ -45,6 +45,21 @@ namespace WebApi.Controllers
             }
 
             return book;
+        }
+        [HttpGet("{UserId}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        public async Task<ActionResult<Book>> GetBookUser(int UserId)
+        {
+            var book = await _context.Book.Where(p => p.OwnerId == UserId).ToListAsync();
+
+            if (book[0] == null)
+            {
+                return NotFound();
+            }
+
+            return book[0];
         }
 
         // PUT: api/Books/5

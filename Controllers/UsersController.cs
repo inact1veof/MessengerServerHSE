@@ -27,9 +27,9 @@ namespace WebApi.Controllers
         [HttpGet]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public async Task<ActionResult<IEnumerable<User>>> GetUser()
+        public async Task<ActionResult<IEnumerable<User>>> GetUserALL(int Limit)
         {
-            return await _context.User.ToListAsync();
+            return await _context.User.Take(Limit).ToListAsync();
         }
 
         // GET: api/Users/5

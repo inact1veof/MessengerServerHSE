@@ -25,9 +25,9 @@ namespace WebApi.Controllers
         [HttpGet]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public async Task<ActionResult<IEnumerable<File>>> GetFile()
+        public async Task<ActionResult<IEnumerable<File>>> GetFileALL(int Limit)
         {
-            return await _context.File.ToListAsync();
+            return await _context.File.Take(Limit).ToListAsync();
         }
 
         // GET: api/Files/5
@@ -45,6 +45,15 @@ namespace WebApi.Controllers
             }
 
             return file;
+        }
+        [HttpGet("{UserId}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        public async Task<ActionResult<IEnumerable<File>>> GetFileUser(int UserId)
+        {
+            var files = await _context.File.Where(p => p.OwnerId == UserId).ToListAsync();
+            return files;
         }
 
         // PUT: api/Files/5
@@ -88,7 +97,7 @@ namespace WebApi.Controllers
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(500)]
-        public async Task<ActionResult<File>> PostFile(File file)
+        public async Task<ActionResult<File>> PostFile(File file, string Content)
         {
             _context.File.Add(file);
             await _context.SaveChangesAsync();

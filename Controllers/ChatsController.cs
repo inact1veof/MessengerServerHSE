@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApi;
 using WebApi.Data;
+using WebApi.Controllers;
 
 namespace WebApi.Controllers
 {
@@ -30,6 +31,16 @@ namespace WebApi.Controllers
             return await _context.Chat.ToListAsync();
         }
 
+        [HttpGet("{UserId}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        public async Task<ActionResult<IEnumerable<Chat>>> GetUserChats(int UserId)
+        {
+            var chats = await _context.Chat.Where(p => p.Members.Contains(UserId)).ToListAsync();
+            return chats;
+        }
+
         // GET: api/Chats/5
         [HttpGet("{id}")]
         [ProducesResponseType(200)]
@@ -47,8 +58,8 @@ namespace WebApi.Controllers
             return chat;
         }
 
-        // PUT: api/Chats/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    // PUT: api/Chats/5
+    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(204)]
