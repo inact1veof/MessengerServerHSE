@@ -50,7 +50,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
-        public async Task<ActionResult<Book>> GetBookUser(int UserId)
+        public async Task<ActionResult<Book>> GetBookUser(int UserId, int flag)
         {
             var book = await _context.Book.Where(p => p.OwnerId == UserId).ToListAsync();
 

@@ -35,7 +35,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
-        public async Task<ActionResult<IEnumerable<Chat>>> GetUserChats(int UserId)
+        public async Task<ActionResult<IEnumerable<Chat>>> GetUserChats(int UserId, int flag)
         {
             var chats = await _context.Chat.Where(p => p.Members.Contains(UserId)).ToListAsync();
             return chats;

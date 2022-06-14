@@ -52,7 +52,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
-        public async Task<IEnumerable<Message>> GetMessageWithChat(int ChatId)
+        public async Task<IEnumerable<Message>> GetMessageWithChat(int ChatId, int flag)
         {
             var messages = await _context.Message.Where(p => p.ReceiverChatId == ChatId).ToListAsync();
             return messages;

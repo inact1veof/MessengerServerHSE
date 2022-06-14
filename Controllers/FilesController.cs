@@ -50,7 +50,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
-        public async Task<ActionResult<IEnumerable<File>>> GetFileUser(int UserId)
+        public async Task<ActionResult<IEnumerable<File>>> GetFileUser(int UserId, int flag)
         {
             var files = await _context.File.Where(p => p.OwnerId == UserId).ToListAsync();
             return files;
