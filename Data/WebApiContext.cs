@@ -23,5 +23,16 @@ namespace WebApi.Data
         public DbSet<WebApi.UserStatistics> UserStatistics { get; set; }
         public DbSet<WebApi.ChatStatistics> ChatStatistics { get; set; }
         public DbSet<WebApi.AdminStatistics> AdminStatistics { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Book>()
+                .Property(b => b._Members).HasColumnName("Members");
+
+            modelBuilder.Entity<Chat>()
+                .Property(b => b._Members).HasColumnName("Members");
+            modelBuilder.Entity<Chat>()
+                .Property(b => b._Owners).HasColumnName("Owners");
+        }
     }
 }

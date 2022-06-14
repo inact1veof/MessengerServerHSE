@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "laN5w4prheQBkH6gWQ/PmViVNc31mTVSeZUfRvdWkLSKfCRtqzjM6brFFGW9Vl2iczI5KDPEvQSlrlTHntxQsg==",
+  "dgSpecHash": "TEkaB2SQ0w8TlNigyfJtKtAFwq2qJ0cspJ1S3W14EhZ6CU7daSPvgZeEjFX/m+bhHyUyaRCZhZ+LWBgKGvGofA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\12345\\YandexDisk\\Учеба_21-22\\Проектирование архитектуры программных систем\\WebApi\\WebApi\\WebApi.csproj",
+  "projectFilePath": "C:\\Users\\12345\\Documents\\GitHub\\MessengerServer\\WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\12345\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\12345\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

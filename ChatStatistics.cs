@@ -7,9 +7,10 @@ namespace WebApi
 {
     public class ChatStatistics
     {
+        public int id { get; set; }
         public int CountMessages { get; set; }
         public TimeSpan LifeTime { get; set; }
-        public int CountFiles { get; set; }
+        //public int CountFiles { get; set; }
         public int CountUsers { get; set; }
     }
 }

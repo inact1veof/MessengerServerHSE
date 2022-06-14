@@ -27,9 +27,9 @@ namespace WebApi.Controllers
         [HttpGet]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public async Task<ActionResult<IEnumerable<AdminStatistics>>> GetStatistics()
+        public async Task<ActionResult<AdminStatistics>> GetStatistics()
         {
-            return await _context.AdminStatistics.ToListAsync();
+            return await StatisticsMethods.GetAdminStatistics(_context);
         }
     }
 }

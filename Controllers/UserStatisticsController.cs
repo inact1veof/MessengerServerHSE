@@ -30,13 +30,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(500)]
         public async Task<ActionResult<UserStatistics>> GetStatistics(int UserId)
         {
-            var user = await _context.UserStatistics.FindAsync(UserId);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
+            var user = await StatisticsMethods.GetUserStatistics(UserId, _context);
             return user;
         }
        

@@ -7,6 +7,7 @@ namespace WebApi
 {
     public class UserStatistics
     {
+        public int id { get; set; }
         public int CountChats { get; set; }
         public int CountMessages { get; set; }
         public int CountFiles { get; set; }

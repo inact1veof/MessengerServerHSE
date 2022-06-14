@@ -14,6 +14,6 @@ namespace WebApi
         public int SenderUserId { get; set; }
         public int ReceiverChatId { get; set; }
         public DateTime sendTime { get; set; }
-        public string[] Content { get; set; }
+        public string Content { get; set; }
     }
 }

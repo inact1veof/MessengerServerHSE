@@ -30,14 +30,8 @@ namespace WebApi.Controllers
         [ProducesResponseType(500)]
         public async Task<ActionResult<ChatStatistics>> GetStatistics(int ChatId)
         {
-            var user = await _context.ChatStatistics.FindAsync(ChatId);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return user;
+            var chat = await StatisticsMethods.GetChatStatistics(ChatId, _context);
+            return chat;
         }
 
     }
