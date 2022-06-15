@@ -22,7 +22,6 @@ namespace WebApi.Controllers
         {
             _context = context;
         }
-        [DisableCors]
         // GET: api/Chats
         [HttpGet]
         [ProducesResponseType(200)]
@@ -31,7 +30,6 @@ namespace WebApi.Controllers
         {
             return await _context.Chat.ToListAsync();
         }
-        [DisableCors]
         [HttpGet("{UserId}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
@@ -41,7 +39,6 @@ namespace WebApi.Controllers
             var chats = await _context.Chat.Where(p => p.Members.Contains(UserId)).ToListAsync();
             return chats;
         }
-        [DisableCors]
         // GET: api/Chats/5
         [HttpGet("{id}")]
         [ProducesResponseType(200)]
@@ -58,7 +55,6 @@ namespace WebApi.Controllers
 
             return chat;
         }
-        [DisableCors]
         // PUT: api/Chats/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -94,7 +90,6 @@ namespace WebApi.Controllers
 
             return NoContent();
         }
-        [DisableCors]
         // POST: api/Chats
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -107,7 +102,6 @@ namespace WebApi.Controllers
 
             return CreatedAtAction("GetChat", new { id = chat.Id }, chat);
         }
-        [DisableCors]
         // DELETE: api/Chats/5
         [HttpDelete("{id}")]
         [ProducesResponseType(200)]

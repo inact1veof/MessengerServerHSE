@@ -23,7 +23,6 @@ namespace WebApi.Controllers
         {
             _context = context;
         }
-        [DisableCors]
         // GET: api/AdminStatistics
         [HttpGet]
         [ProducesResponseType(200)]

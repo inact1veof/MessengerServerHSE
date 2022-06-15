@@ -438,4 +438,3 @@ C:\Users\12345\Documents\GitHub\MessengerServer\obj\Debug\net5.0\WebApi.dll
 C:\Users\12345\Documents\GitHub\MessengerServer\obj\Debug\net5.0\ref\WebApi.dll
 C:\Users\12345\Documents\GitHub\MessengerServer\obj\Debug\net5.0\WebApi.pdb
 C:\Users\12345\Documents\GitHub\MessengerServer\obj\Debug\net5.0\WebApi.genruntimeconfig.cache
-C:\Users\12345\Documents\GitHub\MessengerServer\obj\Debug\net5.0\WebApi.csproj.AssemblyReference.cache

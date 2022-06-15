@@ -23,7 +23,6 @@ namespace WebApi.Controllers
         {
             _context = context;
         }
-        [DisableCors]
         // GET: api/UserStatistic/5
         [HttpGet("{ChatId}")]
         [ProducesResponseType(200)]

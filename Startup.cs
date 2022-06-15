@@ -31,6 +31,7 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors();
             services.AddSwaggerGen(c => { //<-- NOTE 'Add' instead of 'Configure'
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
@@ -50,7 +51,11 @@ namespace WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors(x => x
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .SetIsOriginAllowed(origin => true)                                                     
+                    .AllowCredentials()); 
             app.UseHttpsRedirection();
 
             app.UseRouting();

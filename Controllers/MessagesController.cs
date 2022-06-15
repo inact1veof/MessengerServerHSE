@@ -21,7 +21,6 @@ namespace WebApi.Controllers
         {
             _context = context;
         }
-        [DisableCors]
         // GET: api/Messages
         [HttpGet]
         [ProducesResponseType(200)]
@@ -30,7 +29,6 @@ namespace WebApi.Controllers
         {
             return await _context.Message.Take(Limit).ToListAsync();
         }
-        [DisableCors]
         // GET: api/Messages/5
         [HttpGet("{id}")]
         [ProducesResponseType(200)]
@@ -47,7 +45,6 @@ namespace WebApi.Controllers
 
             return message;
         }
-        [DisableCors]
         // GET: api/Messages/5
         [HttpGet("{ChatId}")]
         [ProducesResponseType(200)]
@@ -58,7 +55,6 @@ namespace WebApi.Controllers
             var messages = await _context.Message.Where(p => p.ReceiverChatId == ChatId).ToListAsync();
             return messages;
         }
-        [DisableCors]
         // PUT: api/Messages/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -94,7 +90,6 @@ namespace WebApi.Controllers
 
             return NoContent();
         }
-        [DisableCors]
         // POST: api/Messages
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -107,7 +102,6 @@ namespace WebApi.Controllers
 
             return CreatedAtAction("GetMessage", new { id = message.Id }, message);
         }
-        [DisableCors]
         // DELETE: api/Messages/5
         [HttpDelete("{id}")]
         [ProducesResponseType(200)]

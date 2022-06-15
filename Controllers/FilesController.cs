@@ -21,7 +21,6 @@ namespace WebApi.Controllers
         {
             _context = context;
         }
-        [DisableCors]
         // GET: api/Files
         [HttpGet]
         [ProducesResponseType(200)]
@@ -30,7 +29,6 @@ namespace WebApi.Controllers
         {
             return await _context.File.Take(Limit).ToListAsync();
         }
-        [DisableCors]
         // GET: api/Files/5
         [HttpGet("{id}")]
         [ProducesResponseType(200)]
@@ -47,7 +45,6 @@ namespace WebApi.Controllers
 
             return file;
         }
-        [DisableCors]
         [HttpGet("{UserId}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
@@ -57,7 +54,6 @@ namespace WebApi.Controllers
             var files = await _context.File.Where(p => p.OwnerId == UserId).ToListAsync();
             return files;
         }
-        [DisableCors]
         // PUT: api/Files/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -93,7 +89,6 @@ namespace WebApi.Controllers
 
             return NoContent();
         }
-        [DisableCors]
         // POST: api/Files
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -106,7 +101,6 @@ namespace WebApi.Controllers
 
             return CreatedAtAction("GetFile", new { id = file.Id }, file);
         }
-        [DisableCors]
         // DELETE: api/Files/5
         [HttpDelete("{id}")]
         [ProducesResponseType(200)]
