@@ -45,7 +45,7 @@ namespace WebApi.Controllers
 
             return book;
         }
-        [HttpGet("{UserId}")]
+        [HttpGet("{UserId}, {flag}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
@@ -53,7 +53,7 @@ namespace WebApi.Controllers
         {
             var book = await _context.Book.Where(p => p.OwnerId == UserId).ToListAsync();
 
-            if (book[0] == null)
+            if (book.Count == 0)
             {
                 return NotFound();
             }

@@ -26,18 +26,34 @@ namespace WebApi.Controllers
         [HttpGet]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
-        public async Task<ActionResult<IEnumerable<Chat>>> GetChat()
+        public async Task<ActionResult<IEnumerable<Chat>>> GetChatA(int Limit)
         {
-            return await _context.Chat.ToListAsync();
+            return await _context.Chat.Take(Limit).ToListAsync();
         }
-        [HttpGet("{UserId}")]
+        [HttpGet("{UserId}, {flag}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         public async Task<ActionResult<IEnumerable<Chat>>> GetUserChats(int UserId, int flag)
         {
-            var chats = await _context.Chat.Where(p => p.Members.Contains(UserId)).ToListAsync();
-            return chats;
+            var chats = await _context.Chat.ToListAsync();
+            List<int> tempArr = new List<int>();
+            List<Chat> returnChats = new List<Chat>();
+            foreach (var chat in chats)
+            {
+                tempArr = chat.Members.ToList();
+                if (tempArr.Contains(UserId))
+                {
+                    returnChats.Add(chat);
+                }
+                tempArr = new List<int>();
+            }
+            if (returnChats.Count == 0)
+            {
+                return NotFound();
+            }
+            //var chats = await _context.Chat.Where(p => p.Members.Contains(UserId)).ToListAsync();
+            return returnChats;
         }
         // GET: api/Chats/5
         [HttpGet("{id}")]

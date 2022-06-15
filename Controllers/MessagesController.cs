@@ -46,7 +46,7 @@ namespace WebApi.Controllers
             return message;
         }
         // GET: api/Messages/5
-        [HttpGet("{ChatId}")]
+        [HttpGet("{ChatId}, {flag}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [ProducesResponseType(500)]
