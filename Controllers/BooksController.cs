@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +21,7 @@ namespace WebApi.Controllers
         {
             _context = context;
         }
-
+        [DisableCors]
         // GET: api/Books
         [HttpGet]
         [ProducesResponseType(200)]
@@ -29,7 +30,7 @@ namespace WebApi.Controllers
         {
             return await _context.Book.Take(Limit).ToListAsync();
         }
-
+        [DisableCors]
         // GET: api/Books/5
         [HttpGet("{id}")]
         [ProducesResponseType(200)]
@@ -46,6 +47,7 @@ namespace WebApi.Controllers
 
             return book;
         }
+        [DisableCors]
         [HttpGet("{UserId}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
@@ -61,7 +63,7 @@ namespace WebApi.Controllers
 
             return book[0];
         }
-
+        [DisableCors]
         // PUT: api/Books/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -97,7 +99,7 @@ namespace WebApi.Controllers
 
             return NoContent();
         }
-
+        [DisableCors]
         // POST: api/Books
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -110,7 +112,7 @@ namespace WebApi.Controllers
 
             return CreatedAtAction("GetBook", new { id = book.Id }, book);
         }
-
+        [DisableCors]
         // DELETE: api/Books/5
         [HttpDelete("{id}")]
         [ProducesResponseType(200)]

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +23,7 @@ namespace WebApi.Controllers
         {
             _context = context;
         }
-
+        [DisableCors]
         // GET: api/Users
         [HttpGet]
         [ProducesResponseType(200)]
@@ -31,7 +32,7 @@ namespace WebApi.Controllers
         {
             return await _context.User.Take(Limit).ToListAsync();
         }
-
+        [DisableCors]
         // GET: api/Users/5
         [HttpGet("{id}")]
         [ProducesResponseType(200)]
@@ -48,7 +49,7 @@ namespace WebApi.Controllers
 
             return user;
         }
-
+        [DisableCors]
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -84,7 +85,7 @@ namespace WebApi.Controllers
 
             return NoContent();
         }
-
+        [DisableCors]
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -97,7 +98,7 @@ namespace WebApi.Controllers
 
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
-
+        [DisableCors]
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
         [ProducesResponseType(200)]
